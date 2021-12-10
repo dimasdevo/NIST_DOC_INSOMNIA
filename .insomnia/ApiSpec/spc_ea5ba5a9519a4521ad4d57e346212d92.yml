@@ -1,0 +1,136 @@
+_id: spc_ea5ba5a9519a4521ad4d57e346212d92
+type: ApiSpec
+parentId: wrk_e6053b539c0c41bbb7e3d9a14978fa0e
+modified: 1639103217573
+created: 1639100174114
+fileName: NIST_INFRA
+contents: >-
+  openapi: "3.0.0"
+
+  info:
+    description: "Merupakan API yang digunakan oleh aplikasi dari infra app. API ini dikembangkan dengan bahasa pemrograman php versi 7.4 dengan framework laminas"
+    version: "1.0.0"
+    title: "INFRA APP"
+    termsOfService: "http://10.10.40.215"
+    contact:
+      email: "dimas.riska@indonesian-aerospace.com"
+  servers:
+    - url: "http://10.10.40.215:8080"
+  tags:
+
+  - name: "GENERAL"
+    description: "layanan data yang di provide oleh api"
+  paths:
+    /asset:
+      get:
+        tags:
+        - "GENERAL"
+        summary: "Get Asset"
+        description : "Mengambil data asset"
+        produces:
+        - "application/json"
+        responses:
+          "200":
+            description: "Succesfull operation"
+          "400":
+            description: "Invalid"
+          "405":
+            description: "Method not allowed"  
+      post:
+        tags:
+        - "GENERAL"
+        summary: "Add Asset"
+        description : "Menambah data asset"
+        produces:
+        - "application/json"
+        requestBody:
+          required: true
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  n_asset:
+                    description: "Nama"
+                    schema:
+                      type: string
+                  i_asset_sn:
+                    description: "Serial Number"
+                    schema:
+                      type: string
+                  i_asset_inv:
+                    description: "Nomor Inventaris"
+                    schema:
+                      type: string
+                  n_asset_type:
+                    description: "Tipe Asset"
+                    schema:
+                      type: string
+                  a_asset:
+                    description: "Lokasi"
+                    schema:
+                      type: string   
+                  e_asset_note:
+                    description: "Catatan"
+                    schema:
+                      type: string
+                  i_entry:
+                    description: "Nik Pencatat"
+                    schema:
+                      type: string
+        responses:
+          "200":
+            description: "Succesfull operation"
+          "400":
+            description: "Invalid"
+          "405":
+            description: "Method not allowed"
+    /asset/{id}:
+      put:
+        tags:
+        - "GENERAL"
+        summary: "Update Asset"
+        description: "Mengubah data asset"   
+        produces:
+        - "application/json"
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID asset"
+          type: "string"
+          required: "true"
+        requestBody:
+          content:
+            application/x-www-form-urlencoded:
+              schema:
+                type: object
+                properties:
+                  n_asset:
+                    description: "Nama"
+                    schema:
+                      type: string
+                  i_asset_sn:
+                    description: "Serial Number"
+                    schema:
+                      type: string
+                  i_asset_inv:
+                    description: "Nomor Inventaris"
+                    schema:
+                      type: string
+                  n_asset_type:
+                    description: "Tipe Asset"
+                    schema:
+                      type: string
+                  a_asset:
+                    description: "Lokasi"
+                    schema:
+                      type: string   
+                  e_asset_note:
+                    description: "Catatan"
+                    schema:
+                      type: string
+                  i_update:
+                    description: "Nik Pencatat"
+                    schema:
+                      type: string
+contentType: yaml
